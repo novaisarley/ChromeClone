@@ -38,7 +38,7 @@ public class SearchActivity extends AppCompatActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                String url = query;
+                String url = query.trim();
                 String formatedUrl = "";
 
                 if (url.contains("https://www."))formatedUrl = url.replace("https://www.", "");

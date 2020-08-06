@@ -4,21 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="20dp">
+    android:layout_marginBottom="10dp"
+    android:layout_marginTop="10dp">
 
 
     <View
         android:id="@+id/view"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:background="@drawable/iternet_rounded_background"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:src="@drawable/ic_web"
         app:layout_constraintBottom_toBottomOf="@+id/view"
         app:layout_constraintEnd_toEndOf="@+id/view"
@@ -41,23 +42,23 @@
         <TextView
             android:id="@+id/item_history_url"
             android:layout_width="wrap_content"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:text="https://www.fundacaomatiasmachline.org.br/"
-            android:textSize="20sp"
             android:ellipsize="end"
+            android:fontFamily="@font/okomito_medium"
             android:singleLine="true"
-            android:fontFamily="@font/okomito_medium"/>
+            android:text="https://www.fundacaomatiasmachline.org.br/"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/item_history_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textSize="12sp"
-            android:gravity="bottom"
             android:fontFamily="@font/okomito_medium"
-            android:text="05/08/20  |  13:40" />
+            android:gravity="bottom"
+            android:text="05/08/20  |  13:40"
+            android:textSize="11sp" />
     </LinearLayout>
 
 
