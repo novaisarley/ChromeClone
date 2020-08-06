@@ -25,7 +25,7 @@
 
 
         <activity
-            android:name="com.br.arley.mobilewebbrowser.SearchActivity"
+            android:name="com.br.arley.mobilewebbrowser.ui.SearchActivity"
             android:label=" ">
 
             <intent-filter>
@@ -38,11 +38,11 @@
 
         </activity>
 
-        <activity android:name="com.br.arley.mobilewebbrowser.HistoryActivity" >
+        <activity android:name="com.br.arley.mobilewebbrowser.ui.HistoryActivity" >
 
         </activity>
 
-        <activity android:name="com.br.arley.mobilewebbrowser.WebActivity"></activity>
+        <activity android:name="com.br.arley.mobilewebbrowser.ui.WebActivity"></activity>
 
     </application>
 

@@ -1,4 +1,4 @@
-package com.br.arley.mobilewebbrowser;
+package com.br.arley.mobilewebbrowser.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,12 +8,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
+import com.br.arley.mobilewebbrowser.R;
+import com.br.arley.mobilewebbrowser.model.History;
+
+import java.util.List;
 
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHolder> {
-    ArrayList<History> searchHistory;
+    List<History> searchHistory;
 
-    public HistoryAdapter(ArrayList<History> searchHistory) {
+    public HistoryAdapter(List<History> searchHistory) {
         this.searchHistory = searchHistory;
     }
 

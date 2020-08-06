@@ -1,10 +1,13 @@
-package com.br.arley.mobilewebbrowser;
+package com.br.arley.mobilewebbrowser.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+
+import com.br.arley.mobilewebbrowser.model.MyWebViewClient;
+import com.br.arley.mobilewebbrowser.R;
 
 public class WebActivity extends AppCompatActivity {
 

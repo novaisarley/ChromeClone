@@ -1,15 +1,18 @@
-package com.br.arley.mobilewebbrowser;
+package com.br.arley.mobilewebbrowser.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.SearchView;
+
+import com.br.arley.mobilewebbrowser.R;
+import com.br.arley.mobilewebbrowser.db.AppDataBase;
+import com.br.arley.mobilewebbrowser.model.History;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -19,11 +22,14 @@ public class SearchActivity extends AppCompatActivity {
 
     ImageButton btHistory;
     SearchView searchView;
+    AppDataBase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+
+        db = Room.databaseBuilder(getApplicationContext(), AppDataBase.class, "lilbank").allowMainThreadQueries().build();
 
         btHistory = findViewById(R.id.activity_search_bt_history);
         searchView = findViewById(R.id.activity_search_searchview);
@@ -56,7 +62,7 @@ public class SearchActivity extends AppCompatActivity {
                 String date = dateArray[0] + "  |  " + dateArray[1];
 
                 History history = new History(url, formatedUrl, date);
-                Log.d("ADOLETA", history.toString());
+                db.historyDao().insertAll(history);
 
                 Intent i = new Intent(SearchActivity.this, WebActivity.class);
                 i.putExtra("url", query);
