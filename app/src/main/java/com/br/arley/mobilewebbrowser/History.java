@@ -2,13 +2,13 @@ package com.br.arley.mobilewebbrowser;
 
 public class History {
     String url;
+    String formatedUrl;
     String date;
-    String time;
 
-    public History(String url, String date, String time) {
+    public History(String url, String formatedUrl, String date) {
         this.url = url;
+        this.formatedUrl =  formatedUrl;
         this.date = date;
-        this.time = time;
     }
 
     public String getUrl() {
@@ -19,6 +19,14 @@ public class History {
         this.url = url;
     }
 
+    public String getFormatedUrl() {
+        return formatedUrl;
+    }
+
+    public void setFormatedUrl(String formatedUrl) {
+        this.formatedUrl = formatedUrl;
+    }
+
     public String getDate() {
         return date;
     }
@@ -27,11 +35,12 @@ public class History {
         this.date = date;
     }
 
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
+    @Override
+    public String toString() {
+        return "History{" +
+                "url='" + url + '\'' +
+                ", formatedUrl='" + formatedUrl + '\'' +
+                ", date='" + date + '\'' +
+                '}';
     }
 }
