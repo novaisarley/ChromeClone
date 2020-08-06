@@ -22,7 +22,11 @@ public class WebActivity extends AppCompatActivity {
         }
 
         wv = findViewById(R.id.activity_web_webview);
-        wv.loadUrl("url");
+
+        MyWebViewClient webViewClient = new MyWebViewClient(this);
+        wv.setWebViewClient(webViewClient);
+
+        wv.loadUrl(url);
 
         WebSettings webSettings = wv.getSettings();
         //Habilitando o JavaScript
