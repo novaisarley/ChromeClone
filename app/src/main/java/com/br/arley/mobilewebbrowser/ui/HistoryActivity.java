@@ -74,7 +74,12 @@ public class HistoryActivity extends AppCompatActivity {
                 intent.putExtra("url", searchHistory.get(position).getUrl());
                 startActivity(intent);
             }
-            
+
+            @Override
+            public void onDeleteClick(int position) {
+                db.historyDao().delete(searchHistory.get(position));
+                buildRecyclerView();
+            }
         });
     }
 

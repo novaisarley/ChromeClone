@@ -20,7 +20,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
     private OnItemClickListener mListener;
     public interface OnItemClickListener{
         void onUrlClick(int position);
-
+        void onDeleteClick(int position);
     };
 
 
