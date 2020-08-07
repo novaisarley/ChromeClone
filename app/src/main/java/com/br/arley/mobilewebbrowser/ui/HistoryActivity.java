@@ -59,7 +59,7 @@ public class HistoryActivity extends AppCompatActivity {
     public void buildRecyclerView(){
         historyRecyclerView = findViewById(R.id.activity_history_recycler_view);
 
-        AppDataBase db = Room.databaseBuilder(getApplicationContext(), AppDataBase.class, "lilbank").allowMainThreadQueries().build();
+        final AppDataBase db = Room.databaseBuilder(getApplicationContext(), AppDataBase.class, "lilbank").allowMainThreadQueries().build();
         searchHistory = db.historyDao().getAllHistory();
 
         historyRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -69,11 +69,12 @@ public class HistoryActivity extends AppCompatActivity {
 
         adapter.setOnItemClickListener(new HistoryAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(int position) {
+            public void onUrlClick(int position) {
                 Intent intent = new Intent(HistoryActivity.this, WebActivity.class);
                 intent.putExtra("url", searchHistory.get(position).getUrl());
                 startActivity(intent);
             }
+            
         });
     }
 

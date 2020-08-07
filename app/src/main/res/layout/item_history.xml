@@ -31,13 +31,14 @@
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginLeft="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/view"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="20dp"
         android:orientation="vertical"
-        android:weightSum="4">
+        android:weightSum="4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/item_history_bt_delete"
+        app:layout_constraintStart_toEndOf="@+id/view"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/item_history_url"
@@ -48,6 +49,7 @@
             android:fontFamily="@font/okomito_medium"
             android:singleLine="true"
             android:text="https://www.fundacaomatiasmachline.org.br/"
+            android:textColor="#555454"
             android:textSize="16sp" />
 
         <TextView
@@ -60,6 +62,17 @@
             android:text="05/08/20  |  13:40"
             android:textSize="11sp" />
     </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/item_history_bt_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginEnd="6dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_round_cancel" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

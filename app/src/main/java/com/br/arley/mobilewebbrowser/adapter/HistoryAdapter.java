@@ -3,6 +3,7 @@ package com.br.arley.mobilewebbrowser.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,7 +19,8 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
 
     private OnItemClickListener mListener;
     public interface OnItemClickListener{
-        void onItemClick(int position);
+        void onUrlClick(int position);
+
     };
 
 
@@ -51,19 +53,33 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView formatedUrl;
         TextView date;
+        ImageButton btDelete;
 
         public ViewHolder(@NonNull View itemView, final OnItemClickListener listener) {
             super(itemView);
             formatedUrl = itemView.findViewById(R.id.item_history_url);
             date = itemView.findViewById(R.id.item_history_date);
+            btDelete = itemView.findViewById(R.id.item_history_bt_delete);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
+            formatedUrl.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (listener != null){
                         int position = getAdapterPosition();
                         if (position != RecyclerView.NO_POSITION){
-                            listener.onItemClick(position);
+                            listener.onUrlClick(position);
+                        }
+                    }
+                }
+            });
+
+            btDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (listener != null){
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION){
+                            listener.onDeleteClick(position);
                         }
                     }
                 }
