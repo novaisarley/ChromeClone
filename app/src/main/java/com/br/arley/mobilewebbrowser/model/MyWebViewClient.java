@@ -15,6 +15,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import static com.br.arley.mobilewebbrowser.ui.WebActivity.edtUrl;
+
 public class MyWebViewClient extends android.webkit.WebViewClient {
 
     private Activity activity = null;
@@ -43,6 +45,9 @@ public class MyWebViewClient extends android.webkit.WebViewClient {
         String[] dateArray = time.split(" ");
         String date = dateArray[0] + "  |  " + dateArray[1];
         db.historyDao().insertAll(new History(url, formatedUrl, date));
+
+        edtUrl.setText(url);
+
         return false;
     }
 }

@@ -35,6 +35,7 @@ public class HistoryActivity extends AppCompatActivity {
 
         btExit = findViewById(R.id.activity_history_bt_exit);
         btClearAll = findViewById(R.id.activity_history_bt_clean_history);
+        historyRecyclerView = findViewById(R.id.activity_history_recycler_view);
 
         buildRecyclerView();
 
@@ -57,7 +58,6 @@ public class HistoryActivity extends AppCompatActivity {
     }
 
     public void buildRecyclerView(){
-        historyRecyclerView = findViewById(R.id.activity_history_recycler_view);
 
         final AppDataBase db = Room.databaseBuilder(getApplicationContext(), AppDataBase.class, "lilbank").allowMainThreadQueries().build();
         searchHistory = db.historyDao().getAllHistory();
@@ -83,6 +83,9 @@ public class HistoryActivity extends AppCompatActivity {
         });
     }
 
-
-
+    @Override
+    protected void onResume() {
+        buildRecyclerView();
+        super.onResume();
+    }
 }

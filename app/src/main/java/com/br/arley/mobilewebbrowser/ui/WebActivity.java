@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.br.arley.mobilewebbrowser.model.MyWebViewClient;
 import com.br.arley.mobilewebbrowser.R;
@@ -21,8 +22,9 @@ public class WebActivity extends AppCompatActivity {
 
     WebView wv;
     String url;
-    EditText edtUrl;
+    public static EditText edtUrl;
     ImageButton btHome, btAddGuide;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,10 +67,14 @@ public class WebActivity extends AppCompatActivity {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if(actionId== EditorInfo.IME_ACTION_DONE){
+                    if (!edtUrl.getText().toString().trim().isEmpty()){
+                        String url = edtUrl.getText().toString();
+                        setSecurityIcon(url);
+                        wv.loadUrl(url);
+                    }else{
+                        Toast.makeText(WebActivity.this, "Campo vazio", Toast.LENGTH_SHORT).show();
+                    }
 
-                    String url = edtUrl.getText().toString();
-                    setSecurityIcon(url);
-                    wv.loadUrl(url);
                 }
                 return false;
             }
@@ -82,6 +88,8 @@ public class WebActivity extends AppCompatActivity {
         });
 
 
+
+
     }
     void setSecurityIcon(String url){
         if (url.contains("https://"))edtUrl.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_locked, 0, 0, 0);
@@ -93,9 +101,9 @@ public class WebActivity extends AppCompatActivity {
     public void onBackPressed() {
         if (wv.canGoBack()){
             wv.goBack();
+            edtUrl.setText(wv.getUrl());
         }else{
             super.onBackPressed();
         }
-
     }
 }
