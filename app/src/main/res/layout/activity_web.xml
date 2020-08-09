@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.WebActivity"
-    android:background="@android:color/black">
-
+    android:background="@android:color/white"
+    tools:context=".ui.WebActivity">
 
 
     <WebView
@@ -33,10 +32,10 @@
             android:id="@+id/activity_web_bt_home"
             android:layout_width="43dp"
             android:layout_height="0dp"
-            android:background="@android:color/transparent"
-            android:src="@drawable/ic_home"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="10dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_home"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -60,8 +59,8 @@
             android:drawableLeft="@drawable/ic_locked"
             android:drawablePadding="10dp"
             android:ems="10"
-            android:inputType="none"
             android:imeOptions="actionDone"
+            android:inputType="none"
             android:maxLines="1"
             android:paddingLeft="15dp"
             android:paddingRight="10dp"
@@ -87,13 +86,41 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/okomito_medium"
-        android:text="Que pena. \nAlgo ruim aconteceu : ("
-        android:textSize="20sp"
+        android:text="@string/que_pena_algo_ruim_aconteceu"
+        android:textSize="15sp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintHorizontal_bias="0.30"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/activity_web_webview"
+        app:layout_constraintTop_toBottomOf="@id/constraintLayout2"
         app:layout_constraintVertical_bias="0.3" />
+
+    <Button
+        android:id="@+id/activity_web_bt_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/transparent"
+        android:drawableLeft="@drawable/ic_round_go_back"
+        android:fontFamily="@font/okomito_medium"
+        android:text="Go back"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColor="@android:color/secondary_text_light"
+        android:textSize="13sp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@+id/activity_web_tv_error"
+        app:layout_constraintTop_toBottomOf="@+id/activity_web_tv_error" />
+
+    <ProgressBar
+        android:id="@+id/activity_web_progressbar"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="0dp"
+        android:layout_height="10dp"
+        android:indeterminate="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/activity_web_webview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/activity_web_webview" />
 </androidx.constraintlayout.widget.ConstraintLayout>

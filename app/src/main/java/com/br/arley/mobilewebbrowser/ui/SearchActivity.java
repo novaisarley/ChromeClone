@@ -57,11 +57,15 @@ public class SearchActivity extends AppCompatActivity {
                 String formatedUrl = formateUrl(url);
                 String date = getFormatedDate();
 
+                if (!url.contains("http://") && !url.contains("https://")){
+                    url = "https://www.google.com/search?q=" + url;
+                }
+
                 History history = new History(url, formatedUrl, date);
                 db.historyDao().insertAll(history);
 
                 Intent i = new Intent(SearchActivity.this, WebActivity.class);
-                i.putExtra("url", query);
+                i.putExtra("url", url);
                 startActivity(i);
                 return true;
             }
@@ -91,7 +95,7 @@ public class SearchActivity extends AppCompatActivity {
         else if (url.contains("http://www.")) formatedUrl = url.replace("http://www.", "");
         else if (url.contains("https://")) formatedUrl = url.replace("https://", "");
         else if (url.contains("http://")) formatedUrl = url.replace("http://", "");
-        else formatedUrl = url;
+        else formatedUrl = "www.google.com/search?q=" + url;
 
         return formatedUrl;
     }

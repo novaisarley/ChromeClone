@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Gooogle</string>
+    <string name="que_pena_algo_ruim_aconteceu">Que pena. \nAlgo ruim aconteceu : (</string>
 </resources>
