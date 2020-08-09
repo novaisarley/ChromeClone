@@ -11,6 +11,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,12 +19,16 @@ import android.widget.Toast;
 import com.br.arley.mobilewebbrowser.model.MyWebViewClient;
 import com.br.arley.mobilewebbrowser.R;
 
+import org.w3c.dom.Text;
+
 public class WebActivity extends AppCompatActivity {
 
     WebView wv;
     String url;
-    public static EditText edtUrl;
+    EditText edtUrl;
     ImageButton btHome, btAddGuide;
+    ImageView imgError;
+    TextView tvErrorMsg;
 
 
     @Override
@@ -37,23 +42,26 @@ public class WebActivity extends AppCompatActivity {
             url = extras.getString("url", "https://www.google.com/");
         }
 
+        setObjects();
+        setObjectsListeners();
+
+        setSecurityIcon(url);
+        edtUrl.setText(url);
+        setWebView();
+        wv.loadUrl(url);
+
+    }
+
+    void setObjects(){
         edtUrl = findViewById(R.id.activity_web_url_edt);
         wv = findViewById(R.id.activity_web_webview);
         btHome = findViewById(R.id.activity_web_bt_home);
         btAddGuide = findViewById(R.id.activity_web_bt_new_page);
+        imgError = findViewById(R.id.activity_web_img_error);
+        tvErrorMsg = findViewById(R.id.activity_web_tv_error);
+    }
 
-        setSecurityIcon(url);
-
-        edtUrl.setText(url);
-
-        WebSettings webSettings = wv.getSettings();
-        webSettings.setJavaScriptEnabled(true);
-        wv.setWebViewClient(new MyWebViewClient(this));
-
-        wv.loadUrl(url);
-
-
-
+    void setObjectsListeners(){
         btHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,11 +94,14 @@ public class WebActivity extends AppCompatActivity {
                 startActivity(new Intent(WebActivity.this, WebActivity.class));
             }
         });
-
-
-
-
     }
+
+    void setWebView(){
+        WebSettings webSettings = wv.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        wv.setWebViewClient(new MyWebViewClient(this, edtUrl, imgError, tvErrorMsg));
+    }
+
     void setSecurityIcon(String url){
         if (url.contains("https://"))edtUrl.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_locked, 0, 0, 0);
         else if (url.contains("http://"))edtUrl.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_unlocked, 0, 0, 0);

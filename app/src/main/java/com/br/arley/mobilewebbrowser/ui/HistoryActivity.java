@@ -33,12 +33,19 @@ public class HistoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
 
+        setObjects();
+        setObjectsListeners();
+
+        buildRecyclerView();
+    }
+
+    void setObjects() {
         btExit = findViewById(R.id.activity_history_bt_exit);
         btClearAll = findViewById(R.id.activity_history_bt_clean_history);
         historyRecyclerView = findViewById(R.id.activity_history_recycler_view);
+    }
 
-        buildRecyclerView();
-
+    void setObjectsListeners() {
         btExit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,10 +61,9 @@ public class HistoryActivity extends AppCompatActivity {
                 buildRecyclerView();
             }
         });
-
     }
 
-    public void buildRecyclerView(){
+    public void buildRecyclerView() {
 
         final AppDataBase db = Room.databaseBuilder(getApplicationContext(), AppDataBase.class, "lilbank").allowMainThreadQueries().build();
         searchHistory = db.historyDao().getAllHistory();

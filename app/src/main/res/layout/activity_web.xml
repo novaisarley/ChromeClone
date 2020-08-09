@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.WebActivity">
+    tools:context=".ui.WebActivity"
+    android:background="@android:color/black">
 
 
 
@@ -59,6 +60,7 @@
             android:drawableLeft="@drawable/ic_locked"
             android:drawablePadding="10dp"
             android:ems="10"
+            android:inputType="none"
             android:imeOptions="actionDone"
             android:maxLines="1"
             android:paddingLeft="15dp"
