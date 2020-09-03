@@ -1,11 +1,9 @@
 package com.br.arley.mobilewebbrowser.model;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.graphics.Bitmap;
-import android.net.Uri;
-import android.util.Log;
 import android.view.View;
+import android.webkit.RenderProcessGoneDetail;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
@@ -14,14 +12,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
-import androidx.constraintlayout.widget.Placeholder;
 import androidx.room.Room;
-
-import com.br.arley.mobilewebbrowser.R;
 import com.br.arley.mobilewebbrowser.db.AppDataBase;
-import com.br.arley.mobilewebbrowser.ui.WebActivity;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -46,7 +38,7 @@ public class MyWebViewClient extends android.webkit.WebViewClient {
     }
 
     @Override
-    public boolean shouldOverrideUrlLoading(WebView view,  WebResourceRequest request) {
+    public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
         AppDataBase db = Room.databaseBuilder(view.getContext(), AppDataBase.class, "lilbank").allowMainThreadQueries().build();
         String url = request.getUrl().toString();
         String formatedUrl = formateUrl(url.trim());
@@ -54,11 +46,8 @@ public class MyWebViewClient extends android.webkit.WebViewClient {
 
         db.historyDao().insertAll(new History(url, formatedUrl, date));
 
-        edtUrl.setText(url);
-
-        return false;
+        return super.shouldOverrideUrlLoading(view, request);
     }
-
 
     private String formateUrl(String url){
         String formatedUrl;
@@ -97,7 +86,7 @@ public class MyWebViewClient extends android.webkit.WebViewClient {
         super.onPageFinished(view, url);
     }
 
-    @Override
+    /*@Override
     public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
         edtUrl.setEnabled(false);
         view.setVisibility(View.INVISIBLE);
@@ -106,5 +95,6 @@ public class MyWebViewClient extends android.webkit.WebViewClient {
         tvErrorMsg.setText("Que pena. \nAlgo ruim aconteceu : ( \n\n" + error.getDescription().toString());
         btGoBack.setVisibility(View.VISIBLE);
         super.onReceivedError(view, request, error);
-    }
+    }*/
+
 }

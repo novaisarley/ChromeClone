@@ -18,7 +18,7 @@
 
             <intent-filter>
 
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.  action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
 
@@ -26,9 +26,15 @@
 
         </activity>
 
-        <activity android:name="com.br.arley.mobilewebbrowser.ui.HistoryActivity" ></activity>
+        <activity
+            android:name="com.br.arley.mobilewebbrowser.ui.HistoryActivity" >
 
-        <activity android:name="com.br.arley.mobilewebbrowser.ui.WebActivity"></activity>
+        </activity>
+
+        <activity
+            android:name="com.br.arley.mobilewebbrowser.ui.WebActivity">
+
+        </activity>
 
     </application>
 
